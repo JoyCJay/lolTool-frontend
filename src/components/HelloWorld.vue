@@ -3,9 +3,15 @@
     <h1>{{ msg }}</h1>
     <!--
     -->
-    <vn-pie :model="pages"  :height="400"  text-field="name"  
+    <vn-pie :model="pages"  :height="400"  text-field="name"
       value-field="views"  :show-tooltip-percent="true" :show-legend="true">
     </vn-pie>
+    <div>
+      <v-btn color="success">Success</v-btn>
+      <v-btn color="error">Error</v-btn>
+      <v-btn color="warning">Warning</v-btn>
+      <v-btn color="info">Info</v-btn>
+    </div>
   </div>
 </template>
 
@@ -14,33 +20,33 @@ import Vue from 'vue'
 import VueNVD3 from 'vue-nvd3'
 Vue.use(VueNVD3)
 
-var pages = [
-  {
-    "name": "首页",
-    "views": 451297,
-    "stay": 37,
-    "ratio": 0.83
-  },
-  {
-    "name": "产品详情",
-    "views": 288995,
-    "stay": 79,
-    "ratio": 0.6
-  },
-  {
-    "name": "搜索结果",
-    "views": 873718,
-    "stay": 25,
-    "ratio": 0.85
-  }
-]
+// var pages = [
+//   {
+//     "name": "首页",
+//     "views": 451297,
+//     "stay": 37,
+//     "ratio": 0.83
+//   },
+//   {
+//     "name": "产品详情",
+//     "views": 288995,
+//     "stay": 79,
+//     "ratio": 0.6
+//   },
+//   {
+//     "name": "搜索结果",
+//     "views": 873718,
+//     "stay": 25,
+//     "ratio": 0.85
+//   }
+// ]
 
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
-  ,data() {
+  },
+  data() {
     return {
       pages: [
         {
