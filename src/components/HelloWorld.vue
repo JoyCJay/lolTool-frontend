@@ -1,92 +1,79 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <!--
-    -->
-    <vn-pie :model="pages"  :height="400"  text-field="name"
-      value-field="views"  :show-tooltip-percent="true" :show-legend="true">
-    </vn-pie>
-    <div>
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="error">Error</v-btn>
-      <v-btn color="warning">Warning</v-btn>
-      <v-btn color="info">Info</v-btn>
-    </div>
+
+    <v-container fluid grid-list-md>
+      <v-layout align-space-around justify-center row fill-height wrap>
+        <v-flex d-flex xs12 sm12 md12 id="summoner">
+          <summoner/>
+        </v-flex>
+
+        <v-flex d-flex xs12 sm12 md12>
+        <v-flex d-flex xs12 sm2 md2>
+          <v-card color="orange" dark height="350px">
+            <v-card-title primary class="title">Match List</v-card-title>
+            <v-list dark>
+            <v-list-tile  v-for="i in 5" :key="i" @click="1" style="text-align:center;">
+              <v-list-tile-avatar>
+                <v-icon class="grey lighten-1 white--text">{{ 'games' }}</v-icon>
+              </v-list-tile-avatar>
+  
+              <v-list-tile-content>
+                <v-list-tile-title>Match {{i + matchPage*5 -5}} - Win</v-list-tile-title>
+                <v-list-tile-sub-title>2019.3.21</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            </v-list>
+
+            <v-pagination  v-model="matchPage" :length="4" color="grey lighten-1"></v-pagination>
+          </v-card>
+        </v-flex>
+
+        <v-flex d-flex xs12 sm5 md5 child-flex>
+          <v-card color="blue lighten-1" dark height="500px">
+            <v-card-title primary class="title">Blue Team</v-card-title>
+            <v-card-text>ddd</v-card-text>
+          </v-card>
+        </v-flex>
+
+        <v-flex d-flex xs12 sm5 md5>
+          <v-card color="purple" dark>
+            <v-card-title primary class="title">Red Team</v-card-title>
+            <v-card-text>eee</v-card-text>
+          </v-card>
+        </v-flex>
+        </v-flex>
+
+        <v-flex d-flex xs12 sm12 md12 id="Charts">
+          <Charts/>
+        </v-flex>
+
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import VueNVD3 from 'vue-nvd3'
-Vue.use(VueNVD3)
-
-// var pages = [
-//   {
-//     "name": "首页",
-//     "views": 451297,
-//     "stay": 37,
-//     "ratio": 0.83
-//   },
-//   {
-//     "name": "产品详情",
-//     "views": 288995,
-//     "stay": 79,
-//     "ratio": 0.6
-//   },
-//   {
-//     "name": "搜索结果",
-//     "views": 873718,
-//     "stay": 25,
-//     "ratio": 0.85
-//   }
-// ]
+import Charts from './Charts.vue'
+import Summoner from './Summoner.vue'
 
 export default {
   name: 'HelloWorld',
+  components: {
+    Charts,
+    Summoner
+  },
   props: {
     msg: String
   },
   data() {
     return {
-      pages: [
-        {
-        "name": "首页",
-        "views": 451297,
-        "stay": 37,
-        "ratio": 0.83
-        },
-        {
-        "name": "产品详情",
-        "views": 288995,
-        "stay": 79,
-        "ratio": 0.6
-        },
-        {
-        "name": "搜索结果",
-        "views": 873718,
-        "stay": 25,
-        "ratio": 0.85
-        }
-      ]
+      matchPage:1
     }
   }
 }
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style>
+
 </style>
