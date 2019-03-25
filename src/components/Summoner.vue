@@ -13,25 +13,25 @@
 
           <v-flex md9 style="text-align:center">
             <v-layout row wrap>
-            <v-flex md2>
-            <v-avatar :size="156" color="grey lighten-4" >
-              <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
-            </v-avatar>
-            </v-flex>
-            <v-flex md4>
-              <v-card-text>Summoner ID: {{id}}</v-card-text>
-              "summonerLevel": 104
-              "platformId": "EUW1",
-            </v-flex>
-            <v-flex md4>
-              "revisionDate": 1553333357000,
-              "accountId": "k3FVou_50RmEUDSN42cCs4iVXuggR-kQvhH7a_X8JAgoxVI",
-            </v-flex>
+              <v-flex md2>
+                <v-avatar :size="156" color="grey lighten-4" >
+                  <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+                </v-avatar>
+              </v-flex>
+              <v-flex md4>
+                <v-card-text>Summoner ID: {{id}}</v-card-text>
+                "summonerLevel": 104
+                "platformId": "EUW1",
+              </v-flex>
+              <v-flex md4>
+                "revisionDate": 1553333357000,
+                "accountId": "k3FVou_50RmEUDSN42cCs4iVXuggR-kQvhH7a_X8JAgoxVI",
+              </v-flex>
             </v-layout>
           </v-flex>
 
         </v-layout>
-        </v-card>
+      </v-card>
 
   </div>
 </template>

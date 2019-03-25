@@ -8,39 +8,39 @@
         </v-flex>
 
         <v-flex d-flex xs12 sm12 md12>
-        <v-flex d-flex xs12 sm2 md2>
-          <v-card color="orange" dark height="350px">
-            <v-card-title primary class="title">Match List</v-card-title>
-            <v-list dark>
-            <v-list-tile  v-for="i in 5" :key="i" @click="1" style="text-align:center;">
-              <v-list-tile-avatar>
-                <v-icon class="grey lighten-1 white--text">{{ 'games' }}</v-icon>
-              </v-list-tile-avatar>
-  
-              <v-list-tile-content>
-                <v-list-tile-title>Match {{i + matchPage*5 -5}} - Win</v-list-tile-title>
-                <v-list-tile-sub-title>2019.3.21</v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            </v-list>
+          <v-flex d-flex xs12 sm2 md2>
+            <v-card color="orange" dark height="350px">
+              <v-card-title primary class="title">Match List</v-card-title>
+              <v-list dark>
+              <v-list-tile  v-for="i in 5" :key="i" @click="1" style="text-align:center;">
+                <v-list-tile-avatar>
+                  <v-icon class="grey lighten-1 white--text">{{ 'games' }}</v-icon>
+                </v-list-tile-avatar>
 
-            <v-pagination  v-model="matchPage" :length="4" color="grey lighten-1"></v-pagination>
-          </v-card>
-        </v-flex>
+                <v-list-tile-content>
+                  <v-list-tile-title>Match {{i + matchPage*5 -5}} - Win</v-list-tile-title>
+                  <v-list-tile-sub-title>2019.3.21</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              </v-list>
 
-        <v-flex d-flex xs12 sm5 md5 child-flex>
-          <v-card color="blue lighten-1" dark height="500px">
-            <v-card-title primary class="title">Blue Team</v-card-title>
-            <v-card-text>ddd</v-card-text>
-          </v-card>
-        </v-flex>
+              <v-pagination  v-model="matchPage" :length="4" color="grey lighten-1"></v-pagination>
+            </v-card>
+          </v-flex>
 
-        <v-flex d-flex xs12 sm5 md5>
-          <v-card color="purple" dark>
-            <v-card-title primary class="title">Red Team</v-card-title>
-            <v-card-text>eee</v-card-text>
-          </v-card>
-        </v-flex>
+          <v-flex d-flex xs12 sm5 md5 child-flex>
+            <v-card color="blue lighten-1" dark height="500px">
+              <v-card-title primary class="title">Blue Team</v-card-title>
+              <v-card-text>ddd</v-card-text>
+            </v-card>
+          </v-flex>
+
+          <v-flex d-flex xs12 sm5 md5>
+            <v-card color="purple" dark>
+              <v-card-title primary class="title">Red Team</v-card-title>
+              <v-card-text>eee</v-card-text>
+            </v-card>
+          </v-flex>
         </v-flex>
 
         <v-flex d-flex xs12 sm12 md12 id="Charts">
