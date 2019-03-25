@@ -7,7 +7,7 @@
           <v-flex md3 align-self-center style="text-align:center">
             <textarea name="token" id="token" v-model="token"  rows="2"></textarea>
             <div>
-            <v-btn color="info" style="width:60%">Go</v-btn>
+            <v-btn color="info" style="width:60%" @click="handleClick">Go</v-btn>
             </div>
           </v-flex>
 
@@ -38,12 +38,22 @@
 
 <script>
 
+import testUrl from '../utils/api'
+
 export default {
   name: 'Summoner',
   data() {
     return {
       token: "RGAPI-9ef74657-f290-492d-a49a-4d4bb92b3355",
       id:"JoyCJay"
+    }
+  },
+  methods: {
+    handleClick(){
+      testUrl()
+          .then(res => {
+            return res;
+          })
     }
   }
 }
