@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //组件模块
-import Main from './components/HelloWorld'
+import Main from './components/Main'
 
 Vue.use(Router)
 
