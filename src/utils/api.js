@@ -1,5 +1,11 @@
 import http from './request.js'
 
-export function testUrl(){
+function testUrl() {
   return http.get('');
 }
+
+function cube(x) {
+  return x * x * x;
+}
+
+export {testUrl, cube};

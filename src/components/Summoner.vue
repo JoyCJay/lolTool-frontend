@@ -18,14 +18,29 @@
                   <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
                 </v-avatar>
               </v-flex>
-              <v-flex md4>
-                <v-card-text>Summoner ID: {{id}}</v-card-text>
-                "summonerLevel": 104
-                "platformId": "EUW1",
+              <v-flex md3>
+                <div class="attribute">
+                  <span class="key">Platform: </span>
+                  <span class="value"> EUW1</span>
+                </div>
+                <div class="attribute">
+                  <span class="key">Name: </span>
+                  <span class="value"> {{summoner.name}}</span>
+                </div>
+                <div class="attribute">
+                  <span class="key">Level: </span>
+                  <span class="value"> {{summoner.summonerLevel}}</span>
+                </div>
               </v-flex>
-              <v-flex md4>
-                "revisionDate": 1553333357000,
-                "accountId": "k3FVou_50RmEUDSN42cCs4iVXuggR-kQvhH7a_X8JAgoxVI",
+              <v-flex md7>
+                <div class="attribute">
+                  <span class="key">RevisionDate: </span>
+                  <span class="value"> {{summoner.revisionDate}}</span>
+                </div>
+                <div class="attribute">
+                  <span class="key">Id: </span>
+                  <span class="value">{{summoner.accountId}}</span>
+                </div>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -37,12 +52,12 @@
 </template>
 
 <script>
-
-import testUrl from '../utils/api'
+import Vue from 'vue'
+import {testUrl, cube} from '../utils/api';
 
 export default {
   name: 'Summoner',
-  data() {
+  data: function() {
     return {
       token: "RGAPI-9ef74657-f290-492d-a49a-4d4bb92b3355",
       id:"JoyCJay"
@@ -50,23 +65,31 @@ export default {
   },
   methods: {
     handleClick(){
-      testUrl()
-          .then(res => {
-            return res;
-          })
+      testUrl().then(res => {
+        this.$emit('toogle');
+        return res;
+      })
     }
-  }
-}
+  },
+  props: ["summoner"]
+};
 
 </script>
 <style>
-.left{
-  text-align: center
-}
 #token{
   background-color: white;
   width: 60%;
   color: gray;
 }
-
+.attribute{
+  text-align:left;
+}
+.key{
+  font-weight: bolder;
+  font-size: 30px;
+  color: black
+}
+.value{
+  font-size: 30px;
+}
 </style>

@@ -9,8 +9,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     { path: '/', name: 'home', component: Main },
-    { path: '/main', name: 'Main', component: Main },
-    // { path: '/header',  name: 'Header', component: Header},
-    // { path: '/admin',  name: 'Admin', component: Admin}
+    { path: '/main', name: 'Main'}
   ]
 })
