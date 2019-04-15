@@ -5,13 +5,13 @@
         <v-layout row wrap justify-space-around>
 
           <v-flex md3 align-self-center style="text-align:center">
-            <textarea name="token" id="token" v-model="token"  rows="2"></textarea>
+            <textarea id="summonerId" v-model="summoner.name"  rows="1"></textarea>
             <div>
-            <v-btn color="info" style="width:60%" @click="handleClick">Go</v-btn>
+            <v-btn color="info" style="width:60%" @click="searchSummonerHandler">Search Summoner</v-btn>
             </div>
           </v-flex>
 
-          <v-flex md9 style="text-align:center">
+          <v-flex md9 style="text-align:center" v-if="summonerVisible">
             <v-layout row wrap>
               <v-flex md2>
                 <v-avatar :size="156" color="grey lighten-4" >
@@ -41,6 +41,10 @@
                   <span class="key">Id: </span>
                   <span class="value">{{summoner.accountId}}</span>
                 </div>
+
+                <div>
+                  <v-btn color="indigo" @click="viewDetails">View Details</v-btn>
+                </div>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -57,26 +61,38 @@ import {testUrl, cube} from '../utils/api';
 
 export default {
   name: 'Summoner',
+  props: ['summoner'],
   data: function() {
     return {
-      token: "RGAPI-9ef74657-f290-492d-a49a-4d4bb92b3355",
-      id:"JoyCJay"
+      // summoner: summoner,
+      summonerVisible:false
     }
   },
   methods: {
-    handleClick(){
+    viewDetails(){
       testUrl().then(res => {
         this.$emit('toogle');
         return res;
       })
+    },
+    searchSummonerHandler(){
+      this.summonerVisible=true;
+      this.$router.push({path:'/consult/'+this.summoner.name});
     }
   },
-  props: ["summoner"]
+  props: ["summoner"],
+  mounted:function(){
+    if (this.$route.params.gameId) {
+      this.summonerVisible=true
+    }
+  }
 };
 
 </script>
 <style>
-#token{
+#summonerId{
+  text-align: center;
+  font-size: 40px;
   background-color: white;
   width: 60%;
   color: gray;

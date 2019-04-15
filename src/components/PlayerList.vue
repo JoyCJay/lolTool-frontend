@@ -2,18 +2,32 @@
   <div>
     <v-card v-if="team == 0" color="blue lighten-2" dark>
       <v-card-title primary class="title">{{ player.id }}</v-card-title>
-      <v-card-text>KDA : {{player.kda}}</v-card-text>
-      <v-card-text>Gold : {{player.gold}}</v-card-text>
-      <v-card-text>Damage : {{player.dmg}}</v-card-text>
-      <v-card-text>Damage Taken : {{player.dmgTaken}}</v-card-text>
+      <div class="meta">
+        <span>KDA : {{player.kda}}</span>
+        <span>Gold : {{player.gold}}</span>
+      </div>
+      <div class="dmg">
+        <span>Damage : {{player.dmg}}</span>
+        <span>Damage Taken : {{player.dmgTaken}}</span>
+      </div>
+      <div class="item">
+        <span>item1 item2</span>
+      </div>
     </v-card>
 
     <v-card v-else color="purple lighten-1" dark>
-      <v-card-title primary class="title" color="black">{{ player.id }}</v-card-title>
-      <v-card-text>KDA : {{player.kda}}</v-card-text>
-      <v-card-text>Gold : {{player.gold}}</v-card-text>
-      <v-card-text>Damage : {{player.dmg}}</v-card-text>
-      <v-card-text>Damage Taken : {{player.dmgTaken}}</v-card-text>
+      <v-card-title primary class="title">{{ player.id }}</v-card-title>
+      <div class="meta">
+        <span>KDA : {{player.kda}}</span>
+        <span>Gold : {{player.gold}}</span>
+      </div>
+      <div class="dmg">
+        <span>Damage : {{player.dmg}}</span>
+        <span>Damage Taken : {{player.dmgTaken}}</span>
+      </div>
+      <div class="item">
+        <span>item1 item2</span>
+      </div>
     </v-card>
   </div>
 </template>
@@ -31,5 +45,8 @@
 </script>
 
 <style scoped>
-
+  span{
+    margin: 20px;
+    color: black;
+  }
 </style>
