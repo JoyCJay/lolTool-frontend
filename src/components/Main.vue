@@ -4,10 +4,10 @@
     <v-container fluid grid-list-md>
       <v-layout align-space-around justify-center row fill-height wrap>
         <v-flex d-flex xs12 sm12 md12 id="summoner">
-          <summoner/>
+          <Summoner @show="show"></Summoner>
         </v-flex>
 
-        <v-flex d-flex xs12 sm12 md12>
+        <v-flex d-flex xs12 sm12 md12 v-if="isShow">
           <v-flex d-flex xs12 sm3 md3>
             <v-card color="orange" dark height="350px">
               <v-card-title primary class="title">Match List</v-card-title>
@@ -59,7 +59,9 @@
 </template>
 
 <script>
-import Charts from './Charts.vue'
+  /* eslint-disable no-console */
+
+  import Charts from './Charts.vue'
 import Summoner from './Summoner.vue'
 import PlayerList from './PlayerList'
 
@@ -75,7 +77,13 @@ export default {
   },
   data() {
     return {
-      matchPage:1
+      matchPage:1,
+      isShow: false
+    }
+  },
+  methods: {
+    show(){
+      this.isShow = this.isShow === true ? false : true;
     }
   }
 }

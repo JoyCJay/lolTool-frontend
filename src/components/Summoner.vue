@@ -37,8 +37,8 @@
 </template>
 
 <script>
-
-import testUrl from '../utils/api'
+  /* eslint-disable no-console */
+  import { testUrl_a } from '../utils/api'
 
 export default {
   name: 'Summoner',
@@ -50,10 +50,12 @@ export default {
   },
   methods: {
     handleClick(){
-      testUrl()
+      this.$emit('show')
+      testUrl_a()
           .then(res => {
+            console.log(res)
             return res;
-          })
+          });
     }
   }
 }
