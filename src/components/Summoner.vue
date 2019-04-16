@@ -5,27 +5,46 @@
         <v-layout row wrap justify-space-around>
 
           <v-flex md3 align-self-center style="text-align:center">
-            <textarea name="token" id="token" v-model="token"  rows="2"></textarea>
+            <textarea id="summonerId" v-model="summoner.name"  rows="1"></textarea>
             <div>
-            <v-btn color="info" style="width:60%" @click="handleClick">Go</v-btn>
+            <v-btn color="info" style="width:60%" @click="searchSummonerHandler">Search Summoner</v-btn>
             </div>
           </v-flex>
 
-          <v-flex md9 style="text-align:center">
+          <v-flex md9 style="text-align:center" v-if="summonerVisible">
             <v-layout row wrap>
               <v-flex md2>
                 <v-avatar :size="156" color="grey lighten-4" >
                   <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
                 </v-avatar>
               </v-flex>
-              <v-flex md4>
-                <v-card-text>Summoner ID: {{id}}</v-card-text>
-                "summonerLevel": 104
-                "platformId": "EUW1",
+              <v-flex md3>
+                <div class="attribute">
+                  <span class="key">Platform: </span>
+                  <span class="value"> EUW1</span>
+                </div>
+                <div class="attribute">
+                  <span class="key">Name: </span>
+                  <span class="value"> {{summoner.name}}</span>
+                </div>
+                <div class="attribute">
+                  <span class="key">Level: </span>
+                  <span class="value"> {{summoner.summonerLevel}}</span>
+                </div>
               </v-flex>
-              <v-flex md4>
-                "revisionDate": 1553333357000,
-                "accountId": "k3FVou_50RmEUDSN42cCs4iVXuggR-kQvhH7a_X8JAgoxVI",
+              <v-flex md7>
+                <div class="attribute">
+                  <span class="key">RevisionDate: </span>
+                  <span class="value"> {{summoner.revisionDate}}</span>
+                </div>
+                <div class="attribute">
+                  <span class="key">Id: </span>
+                  <span class="value">{{summoner.accountId}}</span>
+                </div>
+
+                <div>
+                  <v-btn color="indigo" @click="viewDetails">View Details</v-btn>
+                </div>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -37,38 +56,56 @@
 </template>
 
 <script>
-  /* eslint-disable no-console */
-  import { testUrl_a } from '../utils/api'
+import Vue from 'vue'
+import {testUrl, cube} from '../utils/api';
 
 export default {
   name: 'Summoner',
-  data() {
+  props: ['summoner'],
+  data: function() {
     return {
-      token: "RGAPI-9ef74657-f290-492d-a49a-4d4bb92b3355",
-      id:"JoyCJay"
+      // summoner: summoner,
+      summonerVisible:false
     }
   },
   methods: {
-    handleClick(){
-      this.$emit('show')
-      testUrl_a()
-          .then(res => {
-            console.log(res)
-            return res;
-          });
+    viewDetails(){
+      testUrl().then(res => {
+        this.$emit('toogle');
+        return res;
+      })
+    },
+    searchSummonerHandler(){
+      this.summonerVisible=true;
+      this.$router.push({path:'/consult/'+this.summoner.name});
+    }
+  },
+  props: ["summoner"],
+  mounted:function(){
+    if (this.$route.params.gameId) {
+      this.summonerVisible=true
     }
   }
-}
+};
 
 </script>
 <style>
-.left{
-  text-align: center
-}
-#token{
+#summonerId{
+  text-align: center;
+  font-size: 40px;
   background-color: white;
   width: 60%;
   color: gray;
 }
-
+.attribute{
+  text-align:left;
+}
+.key{
+  font-weight: bolder;
+  font-size: 30px;
+  color: black
+}
+.value{
+  font-size: 30px;
+}
 </style>
