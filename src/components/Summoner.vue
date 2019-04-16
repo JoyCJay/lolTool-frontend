@@ -57,7 +57,7 @@
 
 <script>
 import Vue from 'vue'
-import {testUrl, cube} from '../utils/api';
+import { testUrl, cube } from '../utils/api';
 
 export default {
   name: 'Summoner',

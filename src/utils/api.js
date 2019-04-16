@@ -8,16 +8,17 @@ export function cube(x) {
   return x * x * x;
 }
 
-export function getSummoner(summoner){
-  return {
-    "profileIconId": 3632,
-    "name": "JoyCJay-zcj",
-    "puuid": "6bmemBIp6TveV98cOOKV-Djjjj_0kbyPdk1kBpMrd31spm1RIFowLqP1UJR6ZkIuZWKhxxVS26wdGA",
-    "summonerLevel": 105,
-    "accountId": "k3FVou_50RmEUDSN42cCs4iVXuggR-kQvhH7a_X8JAgoxVI",
-    "id": "oiL2jn33fB3KojNWe1JNqxvgkxIGOkChqH_Zyb5XF4MdJyXo",
-    "revisionDate": 1553733674000
-  };
+export function getSummoner(summonerId){
+  return http.get(`http://localhost:8080/getSummoner?summonerId=${summonerId}`)
+  // return {
+  //   "profileIconId": 3632,
+  //   "name": "JoyCJay-zcj",
+  //   "puuid": "6bmemBIp6TveV98cOOKV-Djjjj_0kbyPdk1kBpMrd31spm1RIFowLqP1UJR6ZkIuZWKhxxVS26wdGA",
+  //   "summonerLevel": 105,
+  //   "accountId": "k3FVou_50RmEUDSN42cCs4iVXuggR-kQvhH7a_X8JAgoxVI",
+  //   "id": "oiL2jn33fB3KojNWe1JNqxvgkxIGOkChqH_Zyb5XF4MdJyXo",
+  //   "revisionDate": 1553733674000
+  // };
 }
 
 export function getMatchList(accountId){
