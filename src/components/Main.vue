@@ -13,7 +13,7 @@
             </v-card>
         </v-flex>
 
-        <GameDetail :blueList="blueList" :redList="redList" v-if="visible" :summoner="summoner"></GameDetail>
+        <GameDetail v-if="visible&&match" :gameMeta="match.Meta" :blueList="match.bluePlayers" :redList="match.redPlayers" :summoner="summoner"></GameDetail>
       </v-layout>
 
       <v-layout align-space-around justify-center row fill-height wrap>
@@ -33,11 +33,10 @@ import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
 import GameDetail from './GameDetail.vue' 
 
-var summoner =  api.getSummoner("JoyCJay");
-var matchList = api.getMatchList(654321); //accountID
-var redList = api.getRedList(123456); //gameid
-var blueList = api.getBlueList(123456); //gameid
-
+var summoner =  api.getSummoner("JoyCJay"); // summonerName
+// var matchList = api.getMatchList(654321); //accountID
+var matchList;
+var match;
 
 export default {
   name: 'Main',
@@ -53,16 +52,17 @@ export default {
       visible:false,
       currentGameId:0,
       matchList:matchList,
-      redList:redList,
-      blueList:blueList
+      match:match
     }
   },
   methods: {
     switchVisibility: function () {
       this.visible=!this.visible;
+      this.matchList = api.getMatchList(this.summoner.accountId);
     },
     switchCurrentGame: function(data){
       let gameId = data[0];
+      this.match = api.getMatch(gameId);
     }
   },
   created:function(){

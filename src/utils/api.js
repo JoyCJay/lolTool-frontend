@@ -1,5 +1,497 @@
 import http from './request.js'
 
+var match1 = {
+	"Meta": {
+    "gameId": 3996539685,
+		"date": "2019 / 4 / 16",
+		"duration": "21 min",
+		"win": "blue"
+	},
+	"bluePlayers": [
+    {
+		"lane": "top",
+		"summonerName": "b1",
+		"champion": "Aatrox",
+		"spells": [6, 14],
+		"items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+		"kda": "1-1-1",
+		"largestMultiKill": 1,
+		"totalMinionsKilled": 157,
+		"turretKills": 0,
+		"gold": 6789,
+		"dmg": 4396,
+		"dmgTaken": 3469,
+		"viewScore": 12
+    },
+    {
+      "lane": "jgl",
+      "summonerName": "b2",
+      "champion": "Aatrox",
+      "spells": [6, 14],
+      "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+      "kda": "1-1-1",
+      "largestMultiKill": 1,
+      "totalMinionsKilled": 157,
+      "turretKills": 0,
+      "gold": 6789,
+      "dmg": 4396,
+      "dmgTaken": 3469,
+      "viewScore": 12
+      },
+      {
+        "lane": "mid",
+        "summonerName": "b3",
+        "champion": "Aatrox",
+        "spells": [6, 14],
+        "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+        "kda": "1-1-1",
+        "largestMultiKill": 1,
+        "totalMinionsKilled": 157,
+        "turretKills": 0,
+        "gold": 6789,
+        "dmg": 4396,
+        "dmgTaken": 3469,
+        "viewScore": 12
+        },
+        {
+          "lane": "sup",
+          "summonerName": "b4",
+          "champion": "Aatrox",
+          "spells": [6, 14],
+          "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+          "kda": "1-1-1",
+          "largestMultiKill": 1,
+          "totalMinionsKilled": 157,
+          "turretKills": 0,
+          "gold": 6789,
+          "dmg": 4396,
+          "dmgTaken": 3469,
+          "viewScore": 12
+          },
+          {
+            "lane": "adc",
+            "summonerName": "b5",
+            "champion": "Aatrox",
+            "spells": [6, 14],
+            "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+            "kda": "1-1-1",
+            "largestMultiKill": 1,
+            "totalMinionsKilled": 157,
+            "turretKills": 0,
+            "gold": 6789,
+            "dmg": 4396,
+            "dmgTaken": 3469,
+            "viewScore": 12
+            }
+  ],
+	"redPlayers": [
+    {
+      "lane": "top",
+      "summonerName": "r1",
+      "champion": "Aatrox",
+      "spells": [6, 14],
+      "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+      "kda": "1-1-1",
+      "largestMultiKill": 1,
+      "totalMinionsKilled": 157,
+      "turretKills": 0,
+      "gold": 6789,
+      "dmg": 4396,
+      "dmgTaken": 3469,
+      "viewScore": 12
+      },
+      {
+        "lane": "jgl",
+        "summonerName": "r2",
+        "champion": "Aatrox",
+        "spells": [6, 14],
+        "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+        "kda": "1-1-1",
+        "largestMultiKill": 1,
+        "totalMinionsKilled": 157,
+        "turretKills": 0,
+        "gold": 6789,
+        "dmg": 4396,
+        "dmgTaken": 3469,
+        "viewScore": 12
+        },
+        {
+          "lane": "mid",
+          "summonerName": "r3",
+          "champion": "Aatrox",
+          "spells": [6, 14],
+          "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+          "kda": "1-1-1",
+          "largestMultiKill": 1,
+          "totalMinionsKilled": 157,
+          "turretKills": 0,
+          "gold": 6789,
+          "dmg": 4396,
+          "dmgTaken": 3469,
+          "viewScore": 12
+          },
+          {
+            "lane": "sup",
+            "summonerName": "r4",
+            "champion": "Aatrox",
+            "spells": [6, 14],
+            "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+            "kda": "1-1-1",
+            "largestMultiKill": 1,
+            "totalMinionsKilled": 157,
+            "turretKills": 0,
+            "gold": 6789,
+            "dmg": 4396,
+            "dmgTaken": 3469,
+            "viewScore": 12
+            },
+            {
+              "lane": "adc",
+              "summonerName": "r5",
+              "champion": "Aatrox",
+              "spells": [6, 14],
+              "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+              "kda": "1-1-1",
+              "largestMultiKill": 1,
+              "totalMinionsKilled": 157,
+              "turretKills": 0,
+              "gold": 6789,
+              "dmg": 4396,
+              "dmgTaken": 3469,
+              "viewScore": 12
+              }
+  ]
+};
+
+var match2 = {
+	"Meta": {
+    "gameId": 3996545874,
+		"date": "2019 / 4 / 17",
+		"duration": "21 min",
+		"win": "red"
+	},
+	"bluePlayers": [
+    {
+		"lane": "top",
+		"summonerName": "b1",
+		"champion": "Ahri",
+		"spells": [6, 14],
+		"items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+		"kda": "2-2-2",
+		"largestMultiKill": 1,
+		"totalMinionsKilled": 157,
+		"turretKills": 0,
+		"gold": 6789,
+		"dmg": 4396,
+		"dmgTaken": 3469,
+		"viewScore": 12
+    },
+    {
+      "lane": "jgl",
+      "summonerName": "b2",
+      "champion": "Ahri",
+      "spells": [6, 14],
+      "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+      "kda": "2-2-2",
+      "largestMultiKill": 1,
+      "totalMinionsKilled": 157,
+      "turretKills": 0,
+      "gold": 6789,
+      "dmg": 4396,
+      "dmgTaken": 3469,
+      "viewScore": 12
+      },
+      {
+        "lane": "mid",
+        "summonerName": "b3",
+        "champion": "Ahri",
+        "spells": [6, 14],
+        "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+        "kda": "2-2-2",
+        "largestMultiKill": 1,
+        "totalMinionsKilled": 157,
+        "turretKills": 0,
+        "gold": 6789,
+        "dmg": 4396,
+        "dmgTaken": 3469,
+        "viewScore": 12
+        },
+        {
+          "lane": "sup",
+          "summonerName": "b4",
+          "champion": "Ahri",
+          "spells": [6, 14],
+          "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+          "kda": "2-2-2",
+          "largestMultiKill": 1,
+          "totalMinionsKilled": 157,
+          "turretKills": 0,
+          "gold": 6789,
+          "dmg": 4396,
+          "dmgTaken": 3469,
+          "viewScore": 12
+          },
+          {
+            "lane": "adc",
+            "summonerName": "b5",
+            "champion": "Ahri",
+            "spells": [6, 14],
+            "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+            "kda": "2-2-2",
+            "largestMultiKill": 1,
+            "totalMinionsKilled": 157,
+            "turretKills": 0,
+            "gold": 6789,
+            "dmg": 4396,
+            "dmgTaken": 3469,
+            "viewScore": 12
+            }
+  ],
+	"redPlayers": [
+    {
+      "lane": "top",
+      "summonerName": "r1",
+      "champion": "Ahri",
+      "spells": [6, 14],
+      "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+      "kda": "2-2-2",
+      "largestMultiKill": 1,
+      "totalMinionsKilled": 157,
+      "turretKills": 0,
+      "gold": 6789,
+      "dmg": 4396,
+      "dmgTaken": 3469,
+      "viewScore": 12
+      },
+      {
+        "lane": "jgl",
+        "summonerName": "r2",
+        "champion": "Ahri",
+        "spells": [6, 14],
+        "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+        "kda": "2-2-2",
+        "largestMultiKill": 1,
+        "totalMinionsKilled": 157,
+        "turretKills": 0,
+        "gold": 6789,
+        "dmg": 4396,
+        "dmgTaken": 3469,
+        "viewScore": 12
+        },
+        {
+          "lane": "mid",
+          "summonerName": "r3",
+          "champion": "Ahri",
+          "spells": [6, 14],
+          "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+          "kda": "2-2-2",
+          "largestMultiKill": 1,
+          "totalMinionsKilled": 157,
+          "turretKills": 0,
+          "gold": 6789,
+          "dmg": 4396,
+          "dmgTaken": 3469,
+          "viewScore": 12
+          },
+          {
+            "lane": "sup",
+            "summonerName": "r4",
+            "champion": "Ahri",
+            "spells": [6, 14],
+            "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+            "kda": "2-2-2",
+            "largestMultiKill": 1,
+            "totalMinionsKilled": 157,
+            "turretKills": 0,
+            "gold": 6789,
+            "dmg": 4396,
+            "dmgTaken": 3469,
+            "viewScore": 12
+            },
+            {
+              "lane": "adc",
+              "summonerName": "r5",
+              "champion": "Ahri",
+              "spells": [6, 14],
+              "items": [3078, 3748, 3111, 3124, 3144, 1052, 3340],
+              "kda": "2-2-2",
+              "largestMultiKill": 1,
+              "totalMinionsKilled": 157,
+              "turretKills": 0,
+              "gold": 6789,
+              "dmg": 4396,
+              "dmgTaken": 3469,
+              "viewScore": 12
+              }
+  ]
+};
+
+var match3 = {
+	"Meta": {
+    "gameId": 3996458012,
+		"date": "2019 / 4 / 18",
+		"duration": "21 min",
+		"win": "blue"
+	},
+	"bluePlayers": [
+    {
+		"lane": "top",
+		"summonerName": "b1",
+		"champion": "Corki",
+		"spells": [6, 14],
+		"items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+		"kda": "3-3-3",
+		"largestMultiKill": 1,
+		"totalMinionsKilled": 157,
+		"turretKills": 0,
+		"gold": 6789,
+		"dmg": 4396,
+		"dmgTaken": 3469,
+		"viewScore": 12
+    },
+    {
+      "lane": "jgl",
+      "summonerName": "b2",
+      "champion": "Corki",
+      "spells": [6, 14],
+      "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+      "kda": "3-3-3",
+      "largestMultiKill": 1,
+      "totalMinionsKilled": 157,
+      "turretKills": 0,
+      "gold": 6789,
+      "dmg": 4396,
+      "dmgTaken": 3469,
+      "viewScore": 12
+      },
+      {
+        "lane": "mid",
+        "summonerName": "b3",
+        "champion": "Corki",
+        "spells": [6, 14],
+        "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+        "kda": "3-3-3",
+        "largestMultiKill": 1,
+        "totalMinionsKilled": 157,
+        "turretKills": 0,
+        "gold": 6789,
+        "dmg": 4396,
+        "dmgTaken": 3469,
+        "viewScore": 12
+        },
+        {
+          "lane": "sup",
+          "summonerName": "b4",
+          "champion": "Corki",
+          "spells": [6, 14],
+          "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+          "kda": "3-3-3",
+          "largestMultiKill": 1,
+          "totalMinionsKilled": 157,
+          "turretKills": 0,
+          "gold": 6789,
+          "dmg": 4396,
+          "dmgTaken": 3469,
+          "viewScore": 12
+          },
+          {
+            "lane": "adc",
+            "summonerName": "b5",
+            "champion": "Corki",
+            "spells": [6, 14],
+            "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+            "kda": "3-3-3",
+            "largestMultiKill": 1,
+            "totalMinionsKilled": 157,
+            "turretKills": 0,
+            "gold": 6789,
+            "dmg": 4396,
+            "dmgTaken": 3469,
+            "viewScore": 12
+            }
+  ],
+	"redPlayers": [
+    {
+      "lane": "top",
+      "summonerName": "r1",
+      "champion": "Corki",
+      "spells": [6, 14],
+      "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+      "kda": "3-3-3",
+      "largestMultiKill": 1,
+      "totalMinionsKilled": 157,
+      "turretKills": 0,
+      "gold": 6789,
+      "dmg": 4396,
+      "dmgTaken": 3469,
+      "viewScore": 12
+      },
+      {
+        "lane": "jgl",
+        "summonerName": "r2",
+        "champion": "Corki",
+        "spells": [6, 14],
+        "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+        "kda": "3-3-3",
+        "largestMultiKill": 1,
+        "totalMinionsKilled": 157,
+        "turretKills": 0,
+        "gold": 6789,
+        "dmg": 4396,
+        "dmgTaken": 3469,
+        "viewScore": 12
+        },
+        {
+          "lane": "mid",
+          "summonerName": "r3",
+          "champion": "Corki",
+          "spells": [6, 14],
+          "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+          "kda": "3-3-3",
+          "largestMultiKill": 1,
+          "totalMinionsKilled": 157,
+          "turretKills": 0,
+          "gold": 6789,
+          "dmg": 4396,
+          "dmgTaken": 3469,
+          "viewScore": 12
+          },
+          {
+            "lane": "sup",
+            "summonerName": "r4",
+            "champion": "Corki",
+            "spells": [6, 14],
+            "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+            "kda": "3-3-3",
+            "largestMultiKill": 1,
+            "totalMinionsKilled": 157,
+            "turretKills": 0,
+            "gold": 6789,
+            "dmg": 4396,
+            "dmgTaken": 3469,
+            "viewScore": 12
+            },
+            {
+              "lane": "adc",
+              "summonerName": "r5",
+              "champion": "Corki",
+              "spells": [6, 14],
+              "items": [3031, 3078, 3094, 3020, 3046, 3140, 3340],
+              "kda": "3-3-3",
+              "largestMultiKill": 1,
+              "totalMinionsKilled": 157,
+              "turretKills": 0,
+              "gold": 6789,
+              "dmg": 4396,
+              "dmgTaken": 3469,
+              "viewScore": 12
+              }
+  ]
+};
+
+var matchList=[match1,match2,match3];
+
+
 export function testUrl() {
   return http.get('');
 }
@@ -8,7 +500,7 @@ export function cube(x) {
   return x * x * x;
 }
 
-export function getSummoner(summoner){
+export function getSummoner(summonerName){
   return {
     "profileIconId": 3632,
     "name": "JoyCJay-zcj",
@@ -21,130 +513,23 @@ export function getSummoner(summoner){
 }
 
 export function getMatchList(accountId){
-  return [
-        {
-            "platformId": "EUW1",
-            "gameId": 3996539685,
-            "champion": 58,
-            "queue": 430,
-            "season": 13,
-            "timestamp": 1555281994161,
-            "role": "SOLO",
-            "lane": "TOP"
-        },
-        {
-            "platformId": "EUW1",
-            "gameId": 3996545874,
-            "champion": 64,
-            "queue": 430,
-            "season": 13,
-            "timestamp": 1555280559170,
-            "role": "DUO_SUPPORT",
-            "lane": "NONE"
-        },
-        {
-            "platformId": "EUW1",
-            "gameId": 3996458012,
-            "champion": 61,
-            "queue": 430,
-            "season": 13,
-            "timestamp": 1555277749568,
-            "role": "SOLO",
-            "lane": "MID"
-        }
-    ];
-}
-
-export function getRedList(gameId){
-  return [
-    {
-      index:0,
-      id: "red1",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:1,
-      id: "red2",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:2,
-      id: "red3",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:3,
-      id: "red4",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:4,
-      id: "red5",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    }
-  ];
-}
-
-export function getBlueList(gameId){
-  return [
-    {
-      index:0,
-      id: "blue1",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:1,
-      id: "blue2",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:2,
-      id: "blue3",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:3,
-      id: "blue4",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-    {
-      index:4,
-      id: "blue5",
-      kda:"1-2-3",
-      gold:"8888",
-      dmg:"123456",
-      dmgTaken:"654321"
-    },
-  ];
+  return matchList;
 }
 
 export function getMatch(matchId) {
-  return {};
+  let result;
+  switch (matchId) {
+    case 3996539685:
+      result= match1;
+      break;
+    case 3996545874:
+      result= match2;
+      break;
+    case 3996458012:
+      result= match3;
+      break;
+    default:
+      break;
+  }
+  return result;
 }
