@@ -5,7 +5,7 @@
         <v-layout row wrap justify-space-around>
 
           <v-flex md3 align-self-center style="text-align:center">
-            <textarea id="summonerId" v-model="summonerName"  rows="1"></textarea>
+            <textarea style="height: 60px;" id="summonerId" v-model="summonerName"  rows="1"></textarea>
             <div>
             <v-btn color="info" style="width:60%" @click="searchSummonerHandler">Search Summoner</v-btn>
             </div>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { testUrl, getSummoner, cube } from '../utils/api';
+import { getSummoner, getMatchList } from '../utils/api';
 
 export default {
   name: 'Summoner',
@@ -64,22 +64,23 @@ export default {
   data: function() {
     return {
       summoner: {},
+      matchList: [],
       summonerName: '',
       summonerVisible:false
     }
   },
   methods: {
     viewDetails(){
-      testUrl().then(res => {
-        this.$emit('toogle');
-        return res;
+      getMatchList(this.summoner.accountId).then(res => {
+        this.matchList = res;
+        this.$emit('toogle', this.matchList);
       })
     },
     searchSummonerHandler(){
       getSummoner(this.summonerName)
           .then(res => {
             // console.log(res);
-            console.log(res);
+            this.summoner = res;
             this.summonerVisible = true;
             this.$emit('summoner', this.summoner);
           });

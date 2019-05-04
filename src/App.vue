@@ -5,7 +5,7 @@
         <span style="margin-right:10px">LO10 - Projet</span>
         <span class="font-weight-light">LOL - Tool</span>
       </v-toolbar-title>
-      <v-btn flat @click="toPath('home')">home</v-btn>
+      <v-btn flat @click="toPath('consult')">home</v-btn>
       <v-btn flat @click="toPath('consult')">consult</v-btn>
       <v-btn flat @click="toPath('onlineControl')">onlineControl</v-btn>
       <v-spacer></v-spacer>
