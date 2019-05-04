@@ -8,8 +8,8 @@ export function cube(x) {
   return x * x * x;
 }
 
-export function getSummoner(summonerId){
-  return http.get(`http://localhost:8080/getSummoner?summonerId=${summonerId}`)
+export function getSummoner(summonerName){
+  return http.get(`http://localhost:9090/consult/getSummoner?summonerName=${summonerName}`)
   // return {
   //   "profileIconId": 3632,
   //   "name": "JoyCJay-zcj",

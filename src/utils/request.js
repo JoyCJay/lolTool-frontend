@@ -19,6 +19,7 @@ const http = axios.create({
 // axios拦截器
 http.interceptors.response.use(
     response => {
+      // console.log(response);
       // 判断后台返回数据携带的请求码
       if (response.status === 200 || response.status === '200') {
         return response.data;

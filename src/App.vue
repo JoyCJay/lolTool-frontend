@@ -5,19 +5,16 @@
         <span style="margin-right:10px">LO10 - Projet</span>
         <span class="font-weight-light">LOL - Tool</span>
       </v-toolbar-title>
+      <v-btn flat @click="toPath('home')">home</v-btn>
+      <v-btn flat @click="toPath('consult')">consult</v-btn>
+      <v-btn flat @click="toPath('onlineControl')">onlineControl</v-btn>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/JoyCJay/lolTool-frontend" target="_blank">
         <span class="mr-2">github link</span>
       </v-btn>
     </v-toolbar>
-
-    <v-content>
-      <ul>
-        <li><router-link to="/consult">consult</router-link></li>
-        <li><router-link to="/onlineControl">onlineControl</router-link></li>
-      </ul>
-      <router-view/>
-    </v-content>
+    <router-view>
+    </router-view>
   </v-app>
 </template>
 
@@ -31,6 +28,11 @@ export default {
     return {
       //
     }
+  },
+  methods: {
+    toPath: function (path) {
+      this.$router.push({path: path})
+    },
   }
 }
 </script>

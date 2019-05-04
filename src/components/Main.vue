@@ -3,7 +3,7 @@
     <v-container fluid grid-list-md>
       <v-layout align-space-around justify-center row fill-height wrap>
         <v-flex d-flex xs12 sm12 md12 id="summoner">
-          <summoner #summoner v-on:toogle="switchVisibility" :summoner="summoner"/>
+          <summoner #summoner v-on:toogle="switchVisibility" @summoner="getSummoner"/>
         </v-flex>
 
         <v-flex d-flex xs12 sm12 md2 v-if="visible">
@@ -33,7 +33,7 @@ import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
 import GameDetail from './GameDetail.vue' 
 
-var summoner =  api.getSummoner("JoyCJay");
+// var summoner =  api.getSummoner("JoyCJay");
 var matchList = api.getMatchList(654321); //accountID
 var redList = api.getRedList(123456); //gameid
 var blueList = api.getBlueList(123456); //gameid
@@ -49,7 +49,7 @@ export default {
   },
   data: function () {
     return {
-      summoner: summoner,
+      summoner: {},
       visible:false,
       currentGameId:0,
       matchList:matchList,
@@ -58,6 +58,10 @@ export default {
     }
   },
   methods: {
+    getSummoner: function(summoner) {
+      console.log(summoner)
+      this.summoner = summoner;
+    },
     switchVisibility: function () {
       this.visible=!this.visible;
     },
