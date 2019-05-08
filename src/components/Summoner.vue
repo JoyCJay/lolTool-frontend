@@ -5,7 +5,7 @@
         <v-layout row wrap justify-space-around>
 
           <v-flex md3 align-self-center style="text-align:center">
-            <textarea id="summonerId" v-model="summoner.name"  rows="1"></textarea>
+            <input type="text" id="summonerId" v-model="searchName"  rows="1" placeholder="Name">
             <div>
             <v-btn color="info" style="width:60%" @click="searchSummonerHandler">Search Summoner</v-btn>
             </div>
@@ -57,30 +57,27 @@
 
 <script>
 import Vue from 'vue'
-import {testUrl, cube} from '../utils/api';
 
 export default {
   name: 'Summoner',
   props: ['summoner'],
   data: function() {
     return {
-      // summoner: summoner,
-      summonerVisible:false
+      summonerVisible:false,
+      searchName: this.$route.params.summonerName
     }
   },
   methods: {
     viewDetails(){
-      testUrl().then(res => {
-        this.$emit('toogle');
-        return res;
-      })
+      this.$emit('toogle');
     },
     searchSummonerHandler(){
       this.summonerVisible=true;
-      this.$router.push({path:'/consult/'+this.summoner.name});
+      this.$router.push({path:'/consult/'+this.searchName});
+      this.$emit('searchSummoner',[this.searchName]);
     }
   },
-  props: ["summoner"],
+
   mounted:function(){
     if (this.$route.params.gameId) {
       this.summonerVisible=true

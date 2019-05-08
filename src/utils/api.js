@@ -1,4 +1,4 @@
-import http from './request.js'
+import Axios from 'axios';
 
 var match1 = {
 	"Meta": {
@@ -492,24 +492,13 @@ var match3 = {
 var matchList=[match1,match2,match3];
 
 
-export function testUrl() {
-  return http.get('');
+export function getAPI(apiPath) {
+  let URL = "/api"+apiPath;
+  return Axios.get(URL)
 }
 
 export function cube(x) {
   return x * x * x;
-}
-
-export function getSummoner(summonerName){
-  return {
-    "profileIconId": 3632,
-    "name": "JoyCJay-zcj",
-    "puuid": "6bmemBIp6TveV98cOOKV-Djjjj_0kbyPdk1kBpMrd31spm1RIFowLqP1UJR6ZkIuZWKhxxVS26wdGA",
-    "summonerLevel": 105,
-    "accountId": "k3FVou_50RmEUDSN42cCs4iVXuggR-kQvhH7a_X8JAgoxVI",
-    "id": "oiL2jn33fB3KojNWe1JNqxvgkxIGOkChqH_Zyb5XF4MdJyXo",
-    "revisionDate": 1553733674000
-  };
 }
 
 export function getMatchList(accountId){
