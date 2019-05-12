@@ -17,7 +17,7 @@
       </div>
       <div class="item">
         <span>Items</span>
-        <img class="itemIcon" v-for="itemId in player.items" :key="itemId" :src="getItemImgSrc(itemId)"/>
+        <img class="itemIcon" v-for="(itemId,index) in player.items" :key="index" :src="getItemImgSrc(itemId)"/>
       </div>
     </v-card>
 
@@ -37,7 +37,7 @@
       </div>
       <div class="item">
         <span>Items</span>
-        <img class="itemIcon" v-for="itemId in player.items" :key="itemId" :src="getItemImgSrc(itemId)"/>
+        <img class="itemIcon" v-for="(itemId,index) in player.items" :key="index" :src="getItemImgSrc(itemId)"/>
       </div>
     </v-card>
   </div>
@@ -57,6 +57,9 @@
         return "http://ossweb-img.qq.com/images/lol/img/champion/"+championName+".png" ;
       },
       getItemImgSrc: function(itemId){
+        if (itemId == 0) {
+          return require("../assets/null.png");
+        }
         return "http://ossweb-img.qq.com/images/lol/img/item/"+itemId+".png";
       }
     }

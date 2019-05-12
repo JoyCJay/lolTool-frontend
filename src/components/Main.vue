@@ -3,7 +3,7 @@
     <v-container fluid grid-list-md>
       <v-layout align-space-around justify-center row fill-height wrap>
         <v-flex d-flex xs12 sm12 md12 id="summoner">
-          <summoner #summoner v-on:searchSummoner="searchSummoner" v-on:toogle="switchVisibility" :summoner="summoner"/>
+          <summoner #summoner v-on:searchSummoner="searchSummoner" v-on:toogle="showGames" :summoner="summoner"/>
         </v-flex>
 
         <v-flex d-flex xs12 sm12 md2 v-if="visible">
@@ -33,8 +33,26 @@ import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
 import GameDetail from './GameDetail.vue' 
 
-var matchList;
-var match;
+
+//deepcopy，不考虑循环引用的情况
+function cloneObj(from) {
+    return Object.keys(from)
+        .reduce((obj, key) => (obj[key] = clone(from[key]), obj), {});
+}
+function cloneArr(from) {
+    return from.map((n) => clone(n));
+}
+// 复制输入值
+function clone(from) {
+    if (from instanceof Array) {
+        return cloneArr(from);
+    } else if (from instanceof Object) {
+        return cloneObj(from);
+    } else {
+        return (from);
+    }
+}
+
 
 export default {
   name: 'Main',
@@ -48,19 +66,30 @@ export default {
     return {
       summoner: Object,
       visible:false,
-      currentGameId:0,
-      matchList:matchList,
-      match:match
+      currentGameId: 0,
+      matchListIndex: 1,
+      matchList:Object,
+      match:Object
     }
   },
   methods: {
-    switchVisibility: function () {
-      this.visible=!this.visible;
-      this.matchList = api.getMatchList(this.summoner.accountId);
+    showGames: function () {
+      if (this.$route.params.summonerName) {
+        this.visible=!this.visible;
+        api.getAPI("http://localhost:9090/consult/getMatches?accountId=" + this.summoner.accountId+"&index="+this.matchListIndex).then( (response)=>{
+          this.matchList = response.data;
+        })
+      }
     },
     switchCurrentGame: function(data){
-      let gameId = data[0];
-      this.match = api.getMatch(gameId);
+      let chosenGameId = data[0];
+      const matchListData = clone(this.matchList); //解绑observer
+        // console.log(matchListData);
+        for (const game of matchListData) {
+        if (game.meta.gameId == chosenGameId) {
+          this.match = game;
+        }
+      }
     },
     searchSummoner: function (data) {
       api.getAPI("/consult/getSummoner?summonerName="+data[0]).then( (response)=>{
@@ -68,6 +97,7 @@ export default {
       })
     }
   },
+  // lifecycle hook`
   created:function(){
     if (this.$route.params.gameId) {
       this.visible=true

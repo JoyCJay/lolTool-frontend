@@ -72,9 +72,11 @@ export default {
       this.$emit('toogle');
     },
     searchSummonerHandler(){
-      this.summonerVisible=true;
-      this.$router.push({path:'/consult/'+this.searchName});
-      this.$emit('searchSummoner',[this.searchName]);
+      if (this.searchName !=undefined ) {
+        this.summonerVisible=true;
+        this.$router.push({path:'/consult/'+this.searchName});
+        this.$emit('searchSummoner',[this.searchName]);
+      }
     }
   },
 

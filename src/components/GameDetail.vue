@@ -14,8 +14,8 @@
         <v-flex xs12 sm4 md6>
               <v-card color="blue lighten-1" dark>
                 <v-card-title primary class="title">Blue Team</v-card-title>
-                <PlayerList v-for="bluePlayer in blueList"
-                                      :key="bluePlayer.lane"
+                <PlayerList v-for="(bluePlayer,index) in blueList"
+                                      :key="index"
                                       :player="bluePlayer"
                                       :team="0">
                 </PlayerList>
@@ -25,8 +25,8 @@
             <v-flex xs12 sm4 md6>
               <v-card color="purple" dark>
                 <v-card-title primary class="title">Red Team</v-card-title>
-                <PlayerList v-for="redPlayer in redList"
-                                      :key="redPlayer.index"
+                <PlayerList v-for="(redPlayer,index) in redList"
+                                      :key="index"
                                       :player="redPlayer"
                                       :team="1">
                 </PlayerList>
