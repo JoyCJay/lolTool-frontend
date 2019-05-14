@@ -12,16 +12,7 @@
               </v-tab>
               <v-tab-item v-for="index in chartList" :key=index>
                 <v-card flat>
-                  <v-layout d-flex align-space-around justify-center row fill-height wrap>
-                    <v-flex xs12 sm4 md4>
-                      <Charts :playerList="match.bluePlayers"></Charts>
-                    </v-flex>
-                    <v-flex xs12 sm4 md4>
-                      <Charts :playerList="match.redPlayers"></Charts>
-                    </v-flex>
-                    <v-flex xs12 sm4 md4>
-                    </v-flex>
-                  </v-layout>
+                  <Charts :playerList="match.bluePlayers"></Charts>
                 </v-card>
               </v-tab-item>
             </v-tabs>

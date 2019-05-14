@@ -1,11 +1,20 @@
 <template>
   <div>
-    <div id="pieChart" :style="{width: '500px', height: '300px'}">
+    <v-layout d-flex align-space-around justify-center row fill-height wrap>
+      <v-flex xs12 sm4 md4>
+        <div id="pieChart" :style="{width: '500px', height: '300px'}">
 
-    </div>
-    <div>
-      {{ playerList }}
-    </div>
+        </div>
+      </v-flex>
+      <v-flex xs12 sm4 md4>
+        <div id="pieChart2" :style="{width: '500px', height: '300px'}">
+
+        </div>
+      </v-flex>
+      <v-flex xs12 sm4 md4>
+      </v-flex>
+    </v-layout>
+
   </div>
 </template>
 
@@ -34,7 +43,8 @@ export default {
           name: player.summonerName
         })
       });
-      let pieChart = this.$echarts.init(document.getElementById('pieChart'))
+      let pieChart = this.$echarts.init(document.getElementById('pieChart'));
+      let pieChart2 = this.$echarts.init(document.getElementById('pieChart2'));
       let option = {
         title: { text: 'damage' },
         tooltip: {},
@@ -47,6 +57,7 @@ export default {
         }]
       };
       pieChart.setOption(option);
+      pieChart2.setOption(option);
     },
   }
 }
