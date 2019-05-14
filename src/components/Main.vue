@@ -3,25 +3,20 @@
     <v-container fluid grid-list-md>
       <v-layout align-space-around justify-center row fill-height wrap>
         <v-flex d-flex xs12 sm12 md12 id="summoner">
-          <summoner #summoner v-on:searchSummoner="searchSummoner" v-on:toogle="showGames" :summoner="summoner"/>
+          <Summoner #summoner v-on:getSummoner="getSummoner" v-on:showMatchList="showMatchList"/>
         </v-flex>
 
         <v-flex d-flex xs12 sm12 md2 v-if="visible">
             <v-card color="orange" dark height="350px">
               <v-card-title primary class="title">Match List</v-card-title>
-                <MatchList v-on:swithcGame="switchCurrentGame" :matchList="matchList" :summoner="summoner"/>
+              <MatchList v-on:switchGame="switchCurrentGame" :matchList="matchList" :summoner="summoner"/>
             </v-card>
         </v-flex>
-
-        <GameDetail v-if="visible&&match" :gameMeta="match.Meta" :blueList="match.bluePlayers" :redList="match.redPlayers" :summoner="summoner"></GameDetail>
-      </v-layout>
-
-      <v-layout align-space-around justify-center row fill-height wrap>
-        <v-flex d-flex xs12 sm12 md12 id="Charts" v-if="visible">
-          <Charts/>
+        <v-flex d-flex xs12 sm12 md1></v-flex>
+        <v-flex d-flex xs12 sm12 md9>
+          <GameDetail v-if="visible" :match="match"></GameDetail>
         </v-flex>
       </v-layout>
-
     </v-container>
   </div>
 </template>
@@ -53,7 +48,6 @@ function clone(from) {
     }
 }
 
-
 export default {
   name: 'Main',
   components: {
@@ -64,41 +58,66 @@ export default {
   },
   data: function () {
     return {
-      summoner: Object,
+      summoner: {},
       visible:false,
       currentGameId: 0,
       matchListIndex: 1,
       matchList:Object,
-      match:Object
+      match:{},
     }
   },
   methods: {
-    showGames: function () {
+    showMatchList: function () {
       if (this.$route.params.summonerName) {
-        this.visible=!this.visible;
-        api.getAPI("http://localhost:9090/consult/getMatches?accountId=" + this.summoner.accountId+"&index="+this.matchListIndex).then( (response)=>{
-          this.matchList = response.data;
+        api.getMatchList(this.summoner.accountId, this.matchListIndex).then(res => {
+          this.matchList = res;
+          this.matchList.forEach(match => {
+            match.meta.result = this.winOrLose(match, this.summoner.name);
+            match.meta.kda = this.showKDA(match, this.summoner.name);
+          });
+          this.visible = !this.visible;
         })
       }
     },
-    switchCurrentGame: function(data){
-      let chosenGameId = data[0];
+    winOrLose: function(match, summonerName) {
+      const winTeam = match.meta.winTeam;
+      let team;
+      match.bluePlayers.forEach(player => {
+        if(player.summonerName === summonerName) team = "Blue"
+      });
+      match.redPlayers.forEach(player => {
+        if(player.summonerName === summonerName) team = "Red"
+      });
+      match.meta.team = team;
+      if(team === winTeam) return '<span style="color: lawngreen">Win</span>';
+      else return '<span style="color: #ff1705;">Lose</span>';
+    },
+    showKDA: function(match, summonerName) {
+      let kda;
+      match.bluePlayers.forEach(player => {
+        if(player.summonerName === summonerName) kda = `<span>K/D/A: ${player.kda}</span>`;
+      });
+      match.redPlayers.forEach(player => {
+        if(player.summonerName === summonerName) kda = `<span>K/D/A: ${player.kda}</span>`;
+      });
+      return kda;
+    },
+    switchCurrentGame: function(gameId){
+      let chosenGameId = gameId[0];
       const matchListData = clone(this.matchList); //解绑observer
         // console.log(matchListData);
         for (const game of matchListData) {
-        if (game.meta.gameId == chosenGameId) {
+        if (game.meta.gameId === chosenGameId) {
           this.match = game;
         }
       }
     },
-    searchSummoner: function (data) {
-      api.getAPI("/consult/getSummoner?summonerName="+data[0]).then( (response)=>{
-          this.summoner = response.data;
-      })
+    getSummoner: function (summoner) {
+      this.summoner = summoner;
     }
   },
   // lifecycle hook`
-  created:function(){
+  created: function(){
     if (this.$route.params.gameId) {
       this.visible=true
     }

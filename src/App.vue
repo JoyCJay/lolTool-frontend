@@ -3,8 +3,12 @@
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span style="margin-right:10px">LO10 - Projet</span>
-        <span class="font-weight-light">LOL - Tool</span>
+        <span class="font-weight-light">LOL - Loupe</span>
       </v-toolbar-title>
+      <v-toolbar-items>
+        <v-btn flat @click="to('consult')">consult</v-btn>
+        <v-btn flat @click="to('onlineControl')">onlineControl</v-btn>
+      </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/JoyCJay/lolTool-frontend" target="_blank">
         <span class="mr-2">github link</span>
@@ -12,10 +16,6 @@
     </v-toolbar>
 
     <v-content>
-      <ul>
-        <li><router-link to="/consult">consult</router-link></li>
-        <li><router-link to="/onlineControl">onlineControl</router-link></li>
-      </ul>
       <router-view/>
     </v-content>
   </v-app>
@@ -30,6 +30,11 @@ export default {
   data () {
     return {
       //
+    }
+  },
+  methods: {
+    to(route){
+      this.$router.push({ name: route });
     }
   }
 }

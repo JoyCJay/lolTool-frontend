@@ -8,22 +8,23 @@ import MatchList from './components/MatchList';
 import  OnlineControl from "./components/OnlineControl";
 import NotFound from "./components/NotFound";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
   routes: [
     {path: ''},
     { 
-      path: '/consult*', component: Main ,
+      path: '/consult', name: 'consult', component: Main ,
       children: [
         {
           path: ':summonerName',
+          name: 'summonerName',
           children:[{name: 'summonerGame', path: ':gameId',component: MatchList}]
         }
       ]
     },
-    { path: '/onlineControl', component: OnlineControl },
+    { path: '/onlineControl', name: 'onlineControl', component: OnlineControl },
     { path: '*', component: NotFound }
   ]
 })
