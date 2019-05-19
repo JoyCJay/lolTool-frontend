@@ -10,9 +10,19 @@
               <v-tab v-for="(item, index) in chartList" :key=index ripple>
                 {{ item }}
               </v-tab>
-              <v-tab-item v-for="index in chartList" :key=index>
+              <v-tab-item>
                 <v-card flat>
-                  <Charts :playerList="match.bluePlayers"></Charts>
+                  <DamageCharts :match="match"></DamageCharts>
+                </v-card>
+              </v-tab-item>
+              <v-tab-item>
+                <v-card flat>
+                  <GoldCharts :match="match"></GoldCharts>
+                </v-card>
+              </v-tab-item>
+              <v-tab-item>
+                <v-card flat>
+                  <KDACharts :match="match"></KDACharts>
                 </v-card>
               </v-tab-item>
             </v-tabs>
@@ -50,24 +60,33 @@
 
 <script>
 import PlayerList from './PlayerList';
-import Charts from './Charts.vue';
+import DamageCharts from '../charts/DamageCharts';
+import GoldCharts from '../charts/GoldCharts';
+import KDACharts from '../charts/KDACharts';
 
 export default {
-    name:"GameDetail",
-    components:{
-      PlayerList,
-      Charts
-    },
-    props: {
-      match: {}
-    },
-    data: function(){
-        return {
-          active: null,
-          chartList: ['damage'],
-            // matchMeta:this.gameMeta
-        }
+  name:"GameDetail",
+  components:{
+    PlayerList,
+    DamageCharts,
+    GoldCharts,
+    KDACharts
+  },
+  props: {
+    match: {}
+  },
+  data: function(){
+    return {
+      active: null,
+      chartList: ['Damage', 'Gold', 'K/D/A'],
+      // matchMeta:this.gameMeta
     }
+  },
+  methods: {
+    chooseMatch(gameId) {
+      this.$emit('switchGame',[gameId]);
+    }
+  }
 }
 </script>
 

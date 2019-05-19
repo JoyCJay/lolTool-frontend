@@ -23,7 +23,6 @@
 
 <script>
 import * as api from '../utils/api';
-import Charts from './Charts.vue';
 import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
 import GameDetail from './GameDetail.vue' 
@@ -51,7 +50,6 @@ function clone(from) {
 export default {
   name: 'Main',
   components: {
-    Charts,
     Summoner,
     MatchList,
     GameDetail
@@ -59,7 +57,7 @@ export default {
   data: function () {
     return {
       summoner: {},
-      visible:false,
+      visible: false,
       currentGameId: 0,
       matchListIndex: 1,
       matchList:Object,
@@ -75,7 +73,7 @@ export default {
             match.meta.result = this.winOrLose(match, this.summoner.name);
             match.meta.kda = this.showKDA(match, this.summoner.name);
           });
-          this.visible = !this.visible;
+          this.visible = true;
         })
       }
     },
@@ -109,6 +107,7 @@ export default {
         for (const game of matchListData) {
         if (game.meta.gameId === chosenGameId) {
           this.match = game;
+          this.visible = true;
         }
       }
     },

@@ -44,6 +44,8 @@
 </template>
 
 <script>
+  import { getChampionImage } from "../utils/api";
+
   export default {
     name: "PlayerList",
     props: ['player','team'],
@@ -54,10 +56,12 @@
     },
     methods:{
       getChampionImgSrc: function (championName) {
-        return "http://ossweb-img.qq.com/images/lol/img/champion/"+championName+".png" ;
+        // getChampionImage(championName).then(res => {
+        //   console.log(res.data.Aatrox.image.full);
+        // })
       },
       getItemImgSrc: function(itemId){
-        if (itemId == 0) {
+        if (itemId === 0) {
           return require("../assets/null.png");
         }
         return "http://ossweb-img.qq.com/images/lol/img/item/"+itemId+".png";

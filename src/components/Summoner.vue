@@ -32,7 +32,7 @@
                   <span class="value"> {{summoner.summonerLevel}}</span>
                 </div>
                 <div class="attribute">
-                  <span class="key">RevisionDate: </span>
+                  <span class="key">Revision date: </span>
                   <span class="value"> {{summoner.revisionDate}}</span>
                 </div>
               </v-flex>
@@ -49,7 +49,6 @@
 </template>
 
 <script>
-
   import { getSummoner } from "../utils/api";
 
   export default {

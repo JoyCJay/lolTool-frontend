@@ -35,9 +35,6 @@ export default {
     },
     methods: {
         chooseMatch(gameId) {
-            this.$router.push(
-                { path: '/consult'+'/'+this.summoner.name+'/'+ gameId}
-            );
             this.$emit('switchGame',[gameId]);
         }
     }

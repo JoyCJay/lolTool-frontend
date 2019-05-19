@@ -12,3 +12,7 @@ export function getSummoner(summonerName) {
 export function getMatchList(accountId, index) {
   return http.get(`/consult/getMatches?accountId=${accountId}&index=${index}`)
 }
+
+export function getChampionImage(championName) {
+  return http.get(`http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json`)
+}

@@ -23,26 +23,27 @@
 export default {
   name: 'Charts',
   props: {
-    playerList: Object
+    match: Object,
   },
   data: function () {
     return {
     }
   },
   watch: {
-    playerList: function(newVal){
-      this.drawDamageChart(newVal)
-    }
+    match: function(newVal){
+        this.drawChart(newVal)
+      }
   },
+  // mounted: function() {
+  //   console.log(this.match)
+  //   this.drawDamageChart(this.match)
+  // },
   methods: {
-    drawDamageChart(playerList) {
-      let data = [];
-      playerList.forEach(player => {
-        data.push({
-          value: player.dmgTaken,
-          name: player.summonerName
-        })
-      });
+    drawChart(match){
+      let data_bluePlayers = [];
+      let data_redPlayers = [];
+      this.dataForChart(match.bluePlayers, data_bluePlayers);
+      this.dataForChart(match.redPlayers, data_redPlayers);
       let pieChart = this.$echarts.init(document.getElementById('pieChart'));
       let pieChart2 = this.$echarts.init(document.getElementById('pieChart2'));
       let option = {
@@ -53,12 +54,31 @@ export default {
           type: 'pie',
           radius: '50%',
           center: ['50%', '50%'],
-          data: data
+          data: data_bluePlayers
+        }]
+      };
+      let option2 = {
+        title: { text: 'damage' },
+        tooltip: {},
+        series: [{
+          name: 'damage',
+          type: 'pie',
+          radius: '50%',
+          center: ['50%', '50%'],
+          data: data_redPlayers
         }]
       };
       pieChart.setOption(option);
-      pieChart2.setOption(option);
+      pieChart2.setOption(option2);
     },
+    dataForChart(playerList, data_players){
+      playerList.forEach(player => {
+        data_players.push({
+          value: player.dmgTaken,
+          name: player.summonerName
+        })
+      });
+    }
   }
 }
 
