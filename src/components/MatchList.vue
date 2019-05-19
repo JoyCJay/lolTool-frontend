@@ -11,11 +11,11 @@
                 <v-list-tile-title v-html="match.meta.result"></v-list-tile-title>
                 <v-list-tile-sub-title>Date: {{match.meta.date}}</v-list-tile-sub-title>
                 <v-list-tile-sub-title v-html="match.meta.kda"></v-list-tile-sub-title>
-
             </v-list-tile-content>
         </v-list-tile>
         <v-divider v-if="index + 1 < matchList.length" :key="`divider-${index}`"></v-divider>
       </template>
+
     </v-list>
     <!--
     <v-pagination  v-model="matchPage" :length="4" color="grey lighten-1"></v-pagination>

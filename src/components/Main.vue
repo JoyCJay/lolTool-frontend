@@ -4,16 +4,28 @@
       <v-layout align-space-around justify-center row fill-height wrap>
         <v-flex d-flex xs12 sm12 md12 id="summoner">
           <Summoner #summoner v-on:getSummoner="getSummoner" v-on:showMatchList="showMatchList"/>
+
         </v-flex>
 
         <v-flex d-flex xs12 sm12 md2 v-if="visible">
             <v-card color="orange" dark height="350px">
               <v-card-title primary class="title">Match List</v-card-title>
               <MatchList v-on:switchGame="switchCurrentGame" :matchList="matchList" :summoner="summoner"/>
+              <v-pagination
+                      v-model="matchListIndex"
+                      :length="5"
+                      :total-visible="5"
+              ></v-pagination>
             </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm12 md1></v-flex>
         <v-flex d-flex xs12 sm12 md9>
+          <v-progress-circular
+                  class="progress-circular"
+                  indeterminate
+                  color="primary"
+                  v-if="circularVisible"
+          ></v-progress-circular>
           <GameDetail v-if="visible" :match="match"></GameDetail>
         </v-flex>
       </v-layout>
@@ -62,6 +74,12 @@ export default {
       matchListIndex: 1,
       matchList:Object,
       match:{},
+      circularVisible: false,
+    }
+  },
+  watch: {
+    matchListIndex: function(){
+      this.showMatchList()
     }
   },
   methods: {
@@ -73,8 +91,10 @@ export default {
             match.meta.result = this.winOrLose(match, this.summoner.name);
             match.meta.kda = this.showKDA(match, this.summoner.name);
           });
-          this.visible = true;
-        })
+          this.visible = true
+          this.circularVisible = false
+        });
+        this.circularVisible = true
       }
     },
     winOrLose: function(match, summonerName) {
@@ -126,5 +146,7 @@ export default {
 </script>
 
 <style>
-
+.progress-circular{
+  margin: 5rem;
+}
 </style>
