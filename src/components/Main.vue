@@ -1,32 +1,32 @@
 <template>
   <div class="hello">
     <v-container fluid grid-list-md>
+      <Summoner #summoner v-on:getSummoner="getSummoner" v-on:showMatchList="showMatchList"/>
       <v-layout align-space-around justify-center row fill-height wrap>
-        <v-flex d-flex xs12 sm12 md12 id="summoner">
-          <Summoner #summoner v-on:getSummoner="getSummoner" v-on:showMatchList="showMatchList"/>
+        <!--<v-flex d-flex xs12 sm12 md12 id="summoner">--><!--</v-flex>-->
+        <v-flex d-flex xs3 sm3 md3 v-if="visible">
+          <v-card color="orange" dark height="480px">
+            <v-card-title primary class="title">Match List</v-card-title>
+            <MatchList v-on:switchGame="switchCurrentGame" :matchList="matchList" :summoner="summoner"/>
+            <v-pagination
+                    v-model="matchListIndex"
+                    :length="5"
+                    :total-visible="5"
+            ></v-pagination>
+            <div>{{ match.meta }}</div>
 
+              <!--<DamageCharts :match="match"></DamageCharts>-->
+          </v-card>
         </v-flex>
-
-        <v-flex d-flex xs12 sm12 md2 v-if="visible">
-            <v-card color="orange" dark height="350px">
-              <v-card-title primary class="title">Match List</v-card-title>
-              <MatchList v-on:switchGame="switchCurrentGame" :matchList="matchList" :summoner="summoner"/>
-              <v-pagination
-                      v-model="matchListIndex"
-                      :length="5"
-                      :total-visible="5"
-              ></v-pagination>
-            </v-card>
-        </v-flex>
-        <v-flex d-flex xs12 sm12 md1></v-flex>
-        <v-flex d-flex xs12 sm12 md9>
+        <!--<v-flex d-flex xs12 sm12 md1></v-flex>-->
+        <v-flex d-flex xs9 sm9 md9>
           <v-progress-circular
                   class="progress-circular"
                   indeterminate
                   color="primary"
                   v-if="circularVisible"
           ></v-progress-circular>
-          <GameDetail v-if="visible" :match="match"></GameDetail>
+          <GameDetail v-if="visible" :match="match" :summoner="summoner"></GameDetail>
         </v-flex>
       </v-layout>
     </v-container>
@@ -37,7 +37,7 @@
 import * as api from '../utils/api';
 import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
-import GameDetail from './GameDetail.vue' 
+import GameDetail from './GameDetail.vue';
 
 
 //deepcopy，不考虑循环引用的情况
@@ -64,7 +64,7 @@ export default {
   components: {
     Summoner,
     MatchList,
-    GameDetail
+    GameDetail,
   },
   data: function () {
     return {
@@ -126,6 +126,7 @@ export default {
         // console.log(matchListData);
         for (const game of matchListData) {
         if (game.meta.gameId === chosenGameId) {
+          game.meta.result = this.winOrLose(game, this.summoner.name);
           this.match = game;
           this.visible = true;
         }

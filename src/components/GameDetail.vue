@@ -4,7 +4,7 @@
       <v-flex xs12 sm4 md12>
         <v-card color="">
           <v-card-title primary class="title">Current Game Information</v-card-title>
-          <v-card-text> Current GameID: {{$route.params.gameId}}</v-card-text>
+          <v-card-text> Current GameID:</v-card-text>
           <div>
             <v-tabs v-model="active" color="cyan" dark slider-color="yellow">
               <v-tab v-for="(item, index) in chartList" :key=index ripple>
@@ -23,6 +23,11 @@
               <v-tab-item>
                 <v-card flat>
                   <KDACharts :match="match"></KDACharts>
+                </v-card>
+              </v-tab-item>
+              <v-tab-item>
+                <v-card flat>
+                  <Radar :match="match" :summoner="summoner"></Radar>
                 </v-card>
               </v-tab-item>
             </v-tabs>
@@ -63,6 +68,7 @@ import PlayerList from './PlayerList';
 import DamageCharts from '../charts/DamageCharts';
 import GoldCharts from '../charts/GoldCharts';
 import KDACharts from '../charts/KDACharts';
+import Radar from '../charts/Radar';
 
 export default {
   name:"GameDetail",
@@ -70,15 +76,17 @@ export default {
     PlayerList,
     DamageCharts,
     GoldCharts,
-    KDACharts
+    KDACharts,
+    Radar
   },
   props: {
-    match: {}
+    match: {},
+    summoner: {}
   },
   data: function(){
     return {
       active: null,
-      chartList: ['Damage', 'Gold', 'K/D/A'],
+      chartList: ['Damage', 'Gold', 'K/D/A', 'Radar'],
       // matchMeta:this.gameMeta
     }
   },
