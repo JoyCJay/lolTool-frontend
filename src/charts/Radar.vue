@@ -1,6 +1,6 @@
 <template>
   <v-layout d-flex align-space-around justify-center row fill-height wrap>
-    <div id="radar" :style="{width: '500px', height: '300px', marginTop: '10px'}">
+    <div id="radar" :style="{width: '400px', height: '300px', marginTop: '10px'}">
 
     </div>
   </v-layout>
@@ -57,7 +57,7 @@
           },
           tooltip: {},
           legend: {
-            left: 130,
+            left: 100,
             data: ['Yours', 'Average']
           },
           radar: {

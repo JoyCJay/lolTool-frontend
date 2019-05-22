@@ -5,7 +5,7 @@
       <v-layout align-space-around justify-center row fill-height wrap>
         <!--<v-flex d-flex xs12 sm12 md12 id="summoner">--><!--</v-flex>-->
         <v-flex d-flex xs3 sm3 md3 v-if="visible">
-          <v-card color="orange" dark height="480px">
+          <v-card color="orange" dark height="880px">
             <v-card-title primary class="title">Match List</v-card-title>
             <MatchList v-on:switchGame="switchCurrentGame" :matchList="matchList" :summoner="summoner"/>
             <v-pagination
@@ -13,13 +13,12 @@
                     :length="5"
                     :total-visible="5"
             ></v-pagination>
-            <div>{{ match.meta }}</div>
-
+            <LastGamesCharts :matchList="matchList" :summoner="summoner"></LastGamesCharts>
               <!--<DamageCharts :match="match"></DamageCharts>-->
           </v-card>
         </v-flex>
-        <!--<v-flex d-flex xs12 sm12 md1></v-flex>-->
-        <v-flex d-flex xs9 sm9 md9>
+        <v-flex d-flex xs12 sm12 md1></v-flex>
+        <v-flex d-flex xs8 sm8 md8>
           <v-progress-circular
                   class="progress-circular"
                   indeterminate
@@ -38,6 +37,7 @@ import * as api from '../utils/api';
 import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
 import GameDetail from './GameDetail.vue';
+import LastGamesCharts from "../charts/LastGamesCharts"
 
 
 //deepcopy，不考虑循环引用的情况
@@ -65,6 +65,7 @@ export default {
     Summoner,
     MatchList,
     GameDetail,
+    LastGamesCharts
   },
   data: function () {
     return {
