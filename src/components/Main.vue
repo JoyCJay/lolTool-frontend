@@ -1,9 +1,8 @@
 <template>
-  <div class="hello">
+  <div class="main">
     <v-container fluid grid-list-md>
       <Summoner #summoner v-on:getSummoner="getSummoner" v-on:showMatchList="showMatchList"/>
       <v-layout align-space-around justify-center row fill-height wrap>
-        <!--<v-flex d-flex xs12 sm12 md12 id="summoner">--><!--</v-flex>-->
         <v-flex d-flex xs3 sm3 md3 v-if="visible">
           <v-card color="orange" dark height="880px">
             <v-card-title primary class="title">Match List</v-card-title>
@@ -14,7 +13,6 @@
                     :total-visible="5"
             ></v-pagination>
             <LastGamesCharts :matchList="matchList" :summoner="summoner"></LastGamesCharts>
-              <!--<DamageCharts :match="match"></DamageCharts>-->
           </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm12 md1></v-flex>
@@ -34,30 +32,12 @@
 
 <script>
 import * as api from '../utils/api';
+import * as utils from '../utils/utils'
 import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
 import GameDetail from './GameDetail.vue';
 import LastGamesCharts from "../charts/LastGamesCharts"
 
-
-//deepcopy，不考虑循环引用的情况
-function cloneObj(from) {
-    return Object.keys(from)
-        .reduce((obj, key) => (obj[key] = clone(from[key]), obj), {});
-}
-function cloneArr(from) {
-    return from.map((n) => clone(n));
-}
-// 复制输入值
-function clone(from) {
-    if (from instanceof Array) {
-        return cloneArr(from);
-    } else if (from instanceof Object) {
-        return cloneObj(from);
-    } else {
-        return (from);
-    }
-}
 
 export default {
   name: 'Main',
@@ -123,8 +103,7 @@ export default {
     },
     switchCurrentGame: function(gameId){
       let chosenGameId = gameId[0];
-      const matchListData = clone(this.matchList); //解绑observer
-        // console.log(matchListData);
+      const matchListData = utils.clone(this.matchList); //解绑observer
         for (const game of matchListData) {
         if (game.meta.gameId === chosenGameId) {
           game.meta.result = this.winOrLose(game, this.summoner.name);

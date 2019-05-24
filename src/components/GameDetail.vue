@@ -2,9 +2,8 @@
   <div>
     <v-layout row wrap>
       <v-flex xs12 sm4 md12>
-        <v-card color="">
+        <v-card>
           <v-card-title primary class="title">Current Game Information</v-card-title>
-          <v-card-text> Current GameID:</v-card-text>
           <div>
             <v-tabs v-model="active" color="cyan" dark slider-color="yellow">
               <v-tab v-for="(item, index) in chartList" :key=index ripple>
