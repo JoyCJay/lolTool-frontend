@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import * as api from '../utils/api';
+import { getMatchList } from '../utils/api';
 import * as utils from '../utils/utils'
 import Summoner from './Summoner.vue';
 import MatchList from'./MatchList.vue';
@@ -56,6 +56,7 @@ export default {
       matchList:Object,
       match:{},
       circularVisible: false,
+      damageChartData: {}
     }
   },
   watch: {
@@ -66,7 +67,7 @@ export default {
   methods: {
     showMatchList: function () {
       if (this.$route.params.summonerName) {
-        api.getMatchList(this.summoner.accountId, this.matchListIndex).then(res => {
+        getMatchList(this.summoner.accountId, this.matchListIndex).then(res => {
           this.matchList = res;
           this.matchList.forEach(match => {
             match.meta.result = this.winOrLose(match, this.summoner.name);
@@ -104,13 +105,16 @@ export default {
     switchCurrentGame: function(gameId){
       let chosenGameId = gameId[0];
       const matchListData = utils.clone(this.matchList); //解绑observer
-        for (const game of matchListData) {
+      for (const game of matchListData) {
         if (game.meta.gameId === chosenGameId) {
           game.meta.result = this.winOrLose(game, this.summoner.name);
           this.match = game;
           this.visible = true;
         }
       }
+      // getEChartsData('damage', this.match).then(res => {
+      //   console.log(res);
+      // });
     },
     getSummoner: function (summoner) {
       this.summoner = summoner;
