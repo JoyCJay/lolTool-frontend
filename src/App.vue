@@ -1,9 +1,10 @@
 <template>
   <v-app>
+    <header>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span style="margin-right:10px">LO10 - Projet</span>
-        <span class="font-weight-light">LOL - Loupe</span>
+        <span style="margin-right:10px">LO10 - Projet: LOL - Loupe</span>
+        <v-btn flat @click="to('Welcome')">Home</v-btn>
       </v-toolbar-title>
       <v-toolbar-items>
         <v-btn flat @click="to('consult')">consult</v-btn>
@@ -14,9 +15,11 @@
         <span class="mr-2">github link</span>
       </v-btn>
     </v-toolbar>
+    </header>
 
-
+    <body>
       <router-view/>
+   </body>
 
   </v-app>
 </template>
@@ -39,3 +42,9 @@ export default {
   }
 }
 </script>
+
+<style>
+header{
+  margin-bottom: 4%
+}
+</style>
