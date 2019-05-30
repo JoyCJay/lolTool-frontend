@@ -11,17 +11,17 @@
               </v-tab>
               <v-tab-item>
                 <v-card flat>
-                  <DamageCharts :match="match"></DamageCharts>
+                  <DamageCharts :match="match" class="chart"></DamageCharts>
                 </v-card>
               </v-tab-item>
               <v-tab-item>
                 <v-card flat>
-                  <GoldCharts :match="match"></GoldCharts>
+                  <GoldCharts :match="match" class="chart"></GoldCharts>
                 </v-card>
               </v-tab-item>
               <v-tab-item>
                 <v-card flat>
-                  <KDACharts :match="match"></KDACharts>
+                  <KDACharts :match="match" class="chart"></KDACharts>
                 </v-card>
               </v-tab-item>
               <v-tab-item>
@@ -98,7 +98,9 @@ export default {
 </script>
 
 <style>
-
+.chart{
+  margin:auto;
+}
 </style>
 
 

@@ -46,7 +46,7 @@
         let chart = this.$echarts.init(document.getElementById('lastGamesChart'));
         let option = {
           title: {
-            text: 'Your last 10 games',
+            text: 'Your last 5 games',
           },
           tooltip: {
             trigger: 'axis'
@@ -64,7 +64,7 @@
           xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+            data: ['1', '2', '3', '4', '5']
           },
           yAxis: {
             type: 'value'

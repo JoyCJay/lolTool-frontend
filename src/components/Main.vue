@@ -15,15 +15,14 @@
             <LastGamesCharts :matchList="matchList" :summoner="summoner"></LastGamesCharts>
           </v-card>
         </v-flex>
-        <v-flex d-flex xs12 sm12 md1></v-flex>
-        <v-flex d-flex xs8 sm8 md8>
+        <v-flex d-flex xs9 sm9 md9>
           <v-progress-circular
                   class="progress-circular"
                   indeterminate
                   color="primary"
                   v-if="circularVisible"
           ></v-progress-circular>
-          <GameDetail v-if="visible" :match="match" :summoner="summoner"></GameDetail>
+          <GameDetail v-if="visible&&!circularVisible" :match="match" :summoner="summoner"></GameDetail>
         </v-flex>
       </v-layout>
     </v-container>
