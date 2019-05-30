@@ -16,6 +16,9 @@ after_success:
   - git add .
   - git commit -m "Automatically update from travis-ci"
   - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" preprod:${P_BRANCH}
+  - sshpass -p ${HOST_PASSWD} ssh travis@ec2-52-47-189-20.eu-west-3.compute.amazonaws.com
+  - echo hello world
+
 
 branches:
   only:
@@ -24,7 +27,6 @@ branches:
 env:
   global:
     - GH_REF: https://github.com/JoyCJay/lolTool-frontend
-    - GH_TOKEN:2ed1e93e4fe2db583f039ca6eadd0e9fb8754f78
     - P_BRANCH:gh-pages
     - U_EMILE:joycjay@163.com
     - U_NAME:joycjay

@@ -23,7 +23,7 @@ http.interceptors.response.use(
       if (response.status === 200 || response.status === '200') {
         return response.data;
       } else {
-        // 非200请求抱错
+        // 非200请求报错
         console.log({
           message: response.message || '服务异常'
           //iconClass: 'icon icon-success'
@@ -42,6 +42,7 @@ http.interceptors.response.use(
       //     message: response.data.message || '服务异常'
       //   });
       // }
+      console.error(error);
     });
 
 export default http;

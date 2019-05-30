@@ -17,6 +17,6 @@ export function getMatchList(accountId, index) {
 //   return http.get(`/consult/getEChartsData?type=${type}&match=${match}`)
 // }
 
-export function getChampionImage(championName) {
+export function getChampionImage() {
   return http.get(`http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json`)
 }

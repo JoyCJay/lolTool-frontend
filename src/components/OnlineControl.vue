@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import * as api from '../utils/api';
 export default {
     name:"OnlineControl",
     components:{}

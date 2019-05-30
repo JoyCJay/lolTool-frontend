@@ -46,7 +46,6 @@
 </template>
 
 <script>
-  import { getChampionImage } from "../utils/api";
   import * as utils from '../utils/utils'
   import raw from "../assets/raw_champion.json";
 
