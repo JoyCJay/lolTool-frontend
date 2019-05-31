@@ -16,8 +16,7 @@ after_success:
   - git add .
   - git commit -m "Automatically update from travis-ci"
   - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" preprod:${P_BRANCH}
-  - sshpass -p ${HOST_PASSWD} ssh travis@ec2-52-47-189-20.eu-west-3.compute.amazonaws.com
-  - echo hello world
+  - sshpass -p ${HOST_PASSWD} scp -o StrictHostKeyChecking=no -r *  root@ec2-52-47-189-20.eu-west-3.compute.amazonaws.com:/var/www/html/
 
 
 branches:
