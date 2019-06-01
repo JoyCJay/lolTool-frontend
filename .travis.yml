@@ -10,15 +10,7 @@ script:
 
 after_success:
   - cd ./dist
-  - git init
-  - git config --global user.name "${U_NAME}"
-  - git config --global user.email "${U_EMAIL}"
-  - git add .
-  - git commit -m "Automatically update from travis-ci"
-  - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" preprod:${P_BRANCH}
-  - pwd
-  - sshpass -p ${HOST_PASSWD} scp -o StrictHostKeyChecking=no -r *  root@ec2-52-47-189-20.eu-west-3.compute.amazonaws.com:/var/www/html/
-
+  - scp -o StrictHostKeyChecking=no -r *  root@35.181.43.169:/var/www/html/lol/
 
 branches:
   only:

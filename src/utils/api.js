@@ -6,11 +6,11 @@ export function getAPI(apiPath) {
 }
 
 export function getSummoner(summonerName) {
-  return http.get(`/consult/getSummoner?summonerName=${summonerName}`)
+  return getAPI(`/consult/getSummoner?summonerName=${summonerName}`)
 }
 
 export function getMatchList(accountId, index) {
-  return http.get(`/consult/getMatches?accountId=${accountId}&index=${index}`)
+  return getAPI(`/consult/getMatches?accountId=${accountId}&index=${index}`)
 }
 
 // export function getEChartsData(type, match) {

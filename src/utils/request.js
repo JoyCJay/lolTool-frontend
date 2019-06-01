@@ -9,7 +9,7 @@ import axios from 'axios'
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const http = axios.create({
-  baseURL: 'http://localhost:9090',
+  // baseURL: 'http://localhost:9090',
   headers: {
     'Content-Type': 'application/json; charset=utf-8'
   },
