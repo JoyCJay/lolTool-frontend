@@ -27,14 +27,14 @@
           if(match.meta.team === "Blue") {
             match.bluePlayers.forEach(player => {
               if(player.accountId === this.summoner.accountId) {
-                this.damageList.push(player.dmgTaken);
+                this.damageList.push(player.dmg);
                 this.goldList.push(player.gold);
               }
             })
           } else {
             match.redPlayers.forEach(player => {
               if(player.accountId === this.summoner.accountId) {
-                this.damageList.push(player.dmgTaken);
+                this.damageList.push(player.dmg);
                 this.goldList.push(player.gold);
               }
             })

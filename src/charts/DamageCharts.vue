@@ -67,7 +67,7 @@
       dataForChart(playerList, data_players){
         playerList.forEach(player => {
           data_players.push({
-            value: player.dmgTaken,
+            value: player.dmg,
             name: player.summonerName
           })
         });

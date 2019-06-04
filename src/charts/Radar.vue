@@ -32,19 +32,19 @@
     },
     methods: {
       analyse(playerList) {
-        let dmgTaken = 0, kill = 0, death = 0, assist = 0;
+        let dmg = 0, kill = 0, death = 0, assist = 0;
         playerList.forEach(player => {
           if(player.accountId === this.summoner.accountId) {
-            this.summonerData.push(player.dmgTaken);
+            this.summonerData.push(player.dmg);
             this.summonerData.push(...this.calculateKDA(player.kda));
           }
-          dmgTaken += player.dmgTaken;
+          dmg += player.dmg;
           kill += parseInt(this.calculateKDA(player.kda)[0]);
           death += parseInt(this.calculateKDA(player.kda)[1]);
           assist += parseInt(this.calculateKDA(player.kda)[2]);
         });
 
-        this.averageData.push(dmgTaken/5);
+        this.averageData.push(dmg/5);
         this.averageData.push(kill/5);
         this.averageData.push(death/5);
         this.averageData.push(assist/5);
