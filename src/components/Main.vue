@@ -7,11 +7,11 @@
           <v-card color="orange" dark height="880px">
             <v-card-title primary class="title">Match List</v-card-title>
             <MatchList v-on:switchGame="switchCurrentGame" :matchList="matchList" :summoner="summoner"/>
-            <v-pagination
-                    v-model="matchListIndex"
-                    :length="5"
-                    :total-visible="5"
-            ></v-pagination>
+            <v-pagination style="width: 100%"
+                  v-model="matchListIndex"
+                  :length="5"
+                  :total-visible="5"
+          ></v-pagination>
             <LastGamesCharts :matchList="matchList" :summoner="summoner"></LastGamesCharts>
           </v-card>
         </v-flex>

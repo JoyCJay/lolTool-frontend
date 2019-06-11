@@ -19,6 +19,7 @@ const http = axios.create({
 // axios拦截器
 http.interceptors.response.use(
     response => {
+      console.log(response);
       // 判断后台返回数据携带的请求码
       if (response.status === 200 || response.status === '200') {
         return response.data;
@@ -31,17 +32,13 @@ http.interceptors.response.use(
         //throw Error(response.data.msg || '服务异常');
       }
     }, error => {
-      // let parsedError = {...error};
-      // const response = parsedError.response;
-      // if (Object.keys(response).length === 0) {
-      //   Toast({
-      //     message: '连接超时，请重试'
-      //   });
-      // } else {
-      //   Toast({
-      //     message: response.data.message || '服务异常'
-      //   });
-      // }
+      let parsedError = {...error};
+      const response = parsedError.response;
+      if (Object.keys(response).length === 0) {
+        console.log('连接超时，请重试');
+      } else {
+        console.log(response.data.message || '服务异常');
+      }
       console.error(error);
     });
 

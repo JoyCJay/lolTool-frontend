@@ -1,8 +1,13 @@
 import http from './request';
 
-export function getAPI(apiPath) {
+function getAPI(apiPath) {
   let URL = "/api"+apiPath;
   return http.get(URL)
+}
+
+function postAPI(apiPath) {
+  let URL = "/api"+apiPath;
+  return http.post(URL)
 }
 
 export function getSummoner(summonerName) {
@@ -11,6 +16,10 @@ export function getSummoner(summonerName) {
 
 export function getMatchList(accountId, index) {
   return getAPI(`/consult/matches/${accountId}/${index}`)
+}
+
+export function submitOnlineControl(onlineControlInformation) {
+  return http.post('/control/online', onlineControlInformation)
 }
 
 // export function getEChartsData(type, match) {

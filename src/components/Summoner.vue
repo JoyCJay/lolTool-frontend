@@ -49,9 +49,9 @@
 </template>
 
 <script>
-  import { getSummoner } from "../utils/api";
+import { getSummoner } from "../utils/api";
 
-  export default {
+export default {
   name: 'Summoner',
   data: function() {
     return {

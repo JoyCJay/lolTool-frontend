@@ -1,5 +1,5 @@
 <template>
-  <div id="lastGamesChart" :style="{width: '450px', height: '300px', marginTop: '10px'}">
+  <div id="lastGamesChart" :style="{width: '100%', height: '300px', marginTop: '10px'}">
 
   </div>
 </template>
